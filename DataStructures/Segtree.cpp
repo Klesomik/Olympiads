@@ -1,28 +1,24 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
 struct Segtree
 {
     const int Neutral = 0, None = 0;
     vector <int> tree, tadd;
     Segtree (int sz = 0): tree (4 * sz), tadd (4 * sz, None) {}
-    void build (vector <int>& data, int v, int tl, int tr);
+    void build (vector <int>& value, int v, int tl, int tr);
     int query (int left, int right, int v, int tl, int tr);
     void update (int left, int right, int value, int v, int tl, int tr);
     void push (int v, int tl, int tr);
     int merge (int x, int y);
 };
 
-void Segtree::build (vector <int>& data, int v, int tl, int tr)
+void Segtree::build (vector <int>& value, int v, int tl, int tr)
 {
     if (tl == tr)
-        tree[v] = data[tl];
+        tree[v] = value[tl];
     else
     {
         int tm = (tl + tr) / 2;
-        build (data, 2 * v + 1, tl, tm);
-        build (data, 2 * v + 2, tm + 1, tr);
+        build (value, 2 * v + 1, tl, tm);
+        build (value, 2 * v + 2, tm + 1, tr);
         tree[v] = merge (tree[2 * v + 1], tree[2 * v + 2]);
     }
 }

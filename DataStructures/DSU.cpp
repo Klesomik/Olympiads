@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
 struct DSU
 {
     vector <int> prev, rang;
@@ -31,7 +27,7 @@ void DSU::unite (int x, int y)
         return;
     if (rang[a] < rang[b])
         swap (a, b);
-    prev[b] = prev[a];
+    prev[b] = a;
     if (rang[a] == rang[b])
         rang[a]++;
 }

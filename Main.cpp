@@ -16,6 +16,8 @@ using namespace std;
 using lli = long long;
 using ld = long double;
 
+mt19937 rnd (time (nullptr));
+
 //}
 
 inline void Solve ()

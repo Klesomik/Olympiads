@@ -3,7 +3,7 @@
 using namespace std;
 
 vector <vector <int>> data;
-vector <int> tin;
+vector <int> tin, fup;
 vector <bool> used;
 int timer = 0;
 
