@@ -11,3 +11,7 @@ __builtin_popcount (x);
 vector <int> v;
 sort (all (v));
 v.erase (unique (all (v)), v.end ());
+
+// Erase only single element
+multiset <int> data;
+data.erase (data.find (value));
