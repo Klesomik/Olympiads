@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
 vector <vector <pair <int, int>>> data;
 
 void Dijkstra (int v)

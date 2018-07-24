@@ -2,12 +2,8 @@
 
 #include <bits/stdc++.h>
 
-#define forn(i, a, b) for (auto i = a; i <= b; i++)
 #define all(x) x.begin (), x.end ()
 #define rall(x) x.rbegin (), x.rend ()
-#define mp make_pair
-#define pii pair <int, int>
-#define pb push_back
 
 #define LOCAL
 

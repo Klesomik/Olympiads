@@ -1,5 +1,0 @@
-long long val1 = 0;
-scanf ("%I64d", &val);
-
-int val2 = 0;
-scanf ("%02d", &val2);
