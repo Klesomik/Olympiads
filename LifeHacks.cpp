@@ -11,6 +11,8 @@ __builtin_popcount (x);
 vector <int> v;
 sort (all (v));
 v.erase (unique (all (v)), v.end ());
+// Compare with it
+buffer.resize (unique (all (buffer)) - buffer.begin ());
 
 // Erase only single element
 multiset <int> data;
@@ -32,9 +34,11 @@ bool IsPrime (int x)
     return true;
 }
 
-// TODO: how does it work?
+// TODO: how does it work? (Win)
 long long val1 = 0;
 scanf ("%I64d", &val);
+// Or (Linux)
+scanf ("%lld", &val);
 
 int val2 = 0;
 scanf ("%02d", &val2);

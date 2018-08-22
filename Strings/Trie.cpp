@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
 struct Vertex
 {
     vector <int> next;
@@ -44,9 +40,4 @@ bool Trie::check (string& value)
         current = tree[current].next[c];
     }
     return (tree[current].leaf);
-}
-
-int main ()
-{
-    return 0;
 }
