@@ -13,14 +13,14 @@ struct Segtree
 void Segtree::build (vector <int>& value, int v, int tl, int tr)
 {
     if (tl == tr)
-        tree[v] = value[tl];
-    else
     {
-        int tm = (tl + tr) / 2;
-        build (value, 2 * v + 1, tl, tm);
-        build (value, 2 * v + 2, tm + 1, tr);
-        tree[v] = merge (tree[2 * v + 1], tree[2 * v + 2]);
+        tree[v] = value[tl];
+        return;
     }
+    int tm = (tl + tr) / 2;
+    build (value, 2 * v + 1, tl, tm);
+    build (value, 2 * v + 2, tm + 1, tr);
+    tree[v] = merge (tree[2 * v + 1], tree[2 * v + 2]);
 }
 
 int Segtree::query (int left, int right, int v, int tl, int tr)

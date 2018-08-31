@@ -1,27 +1,23 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
 vector <vector <int>> data, data_t;
 vector <bool> used;
-vector <int> order, components;
+vector <int> order, comp;
 
 void DFS1 (int v)
 {
     used[v] = true;
-    for (auto it : data[v])
-        if (!used[it])
-            DFS1 (it);
+    for (int u : data[v])
+        if (!used[u])
+            DFS1 (u);
     order.push_back (v);
 }
 
 void DFS2 (int v, int color)
 {
     used[v] = true;
-    components[v] = color;
-    for (auto it : data_t[v])
-        if (!used[it])
-            DFS2 (it);
+    comp[v] = color;
+    for (int u : data_t[v])
+        if (!used[u])
+            DFS2 (u, color);
 }
 
 int main ()
@@ -29,10 +25,11 @@ int main ()
     for (int i = 0; i < n; i++)
         if (!used[i])
             DFS1 (i);
-    reverse (order.begin (), order.end ());
+    reverse (all (order));
     used.assign (n, false);
-    for (auto it : order)
-        if (!used[it])
-            DFS2 (it);
+    int color = 0;
+    for (int v : order)
+        if (!used[v])
+            DFS2 (v, color++);
     return 0;
 }

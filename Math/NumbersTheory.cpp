@@ -20,13 +20,23 @@ int Mul (int a, int b)
     return Mod (a * b, mod);
 }
 
-int Div (int a, int b)
+// mod is prime
+int Inv (int a)
 {
-    return Mul (a, Inv (b));
+    assert (a != 0);
+    return Pow (a, mod - 2);
 }
 
 int Inv (int a)
 {
     assert (a != 0);
-    return Pow (a, mod - 2);
+    int x = 0, y = 0;
+    int g = GCDEx (a, mod, x, y);
+    assert (g == 1);
+    return Mod (x, mod);
+}
+
+int Div (int a, int b)
+{
+    return Mul (a, Inv (b));
 }
