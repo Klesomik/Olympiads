@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
 vector <vector <int>> data;
 vector <int> tin, tout;
 vector <vector <int>> up;
@@ -36,11 +32,5 @@ int LCA (int a, int b)
     return up[a][0];
 }
 
-int main ()
-{
-    int sz = 1;
-    while ((1 << sz) <= n) sz++;
-    up.resize (n, vector <int> (sz + 1));
-    DFS (0, -1);
-    return 0;
-}
+// запуск
+DFS (0, 0);

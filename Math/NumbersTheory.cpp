@@ -12,7 +12,7 @@ int Add (int a, int b)
 
 int Sub (int a, int b)
 {
-    return Mod (a - b, b);
+    return Mod (a - b, mod);
 }
 
 int Mul (int a, int b)

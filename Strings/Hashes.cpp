@@ -11,18 +11,20 @@ void FillBase (lli sz)
     reverse (all (base));
 }
 
+// строка должна состоять из алфавита [a; z]
 void Hash (string& data, lli& result)
 {
     for (lli i = 0; i < data.size (); i++)
-        result = Add (result, Mul ((data[i] - 'a' + 3), base[i]));
+        result = Add (result, Mul (data[i], base[i]));
 }
 
+// строка должна состоять из алфавита [a; z]
 void Hash (string& data, vector <lli>& result)
 {
     result.resize (data.size ());
-    result[0] = Mul ((data[0] - 'a' + 3), base[0]);
+    result[0] = Mul (data[0], base[0]);
     for (lli i = 1; i < data.size (); i++)
-        result[i] = Add (result[i - 1], Mul ((data[i] - 'a' + 3), base[i]));
+        result[i] = Add (result[i - 1], Mul (data[i], base[i]));
 }
 
 lli SubHash (vector <lli>& result, lli l, lli r)
@@ -36,7 +38,5 @@ bool IsEqual (vector <lli>& result, lli l1, lli r1, lli l2, lli r2)
 {
     if ((r1 - l1 + 1) != (r2 - l2 + 1))
         return false;
-    lli h1 = SubHash (result, l1, r1),
-        h2 = SubHash (result, l2, r2);
-    return (h1 == h2);
+    return (SubHash (result, l1, r1) == SubHash (result, l2, r2));
 }

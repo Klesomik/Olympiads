@@ -5,7 +5,7 @@ struct Vector
     Vector (Vector a, Vector b): x (b.x - a.x), y (b.y - a.y) {}
 };
 
-int dot (Vector a, Vector b)
+int dot   (Vector a, Vector b)
 {
     return a.x * b.x + a.y * b.y;
 }
@@ -31,13 +31,13 @@ struct Line
 
 void Crossing (Line first, Line second, vector <pair <double, double>>& result)
 {
-    int a1 = first.a, b1 = first.b, c1 = first.c,
+    double a1 = first.a, b1 = first.b, c1 = first.c,
         a2 = second.a, b2 = second.b, c2 = second.c;
-    int down = (b1 * a2 - b2 * a1);
-    if (down == 0)
+    double down = (b1 * a2 - b2 * a1);
+    if (fabs (down - 0) < eps)
         return;
-    double x = 1.0 * (b2 * c1 - b1 * c2) / down;
-    double y = 1.0 * (a2 * c1 - a1 * c2) / (-down);
+    double x = (double) (b2 * c1 - b1 * c2) / down;
+    double y = (double) (a2 * c1 - a1 * c2) / (-down);
     result.push_back ({ x, y });
 }
 
@@ -49,20 +49,25 @@ Line Perpendicular (Line f, Vector s)
 void Parallel (Line f, double dist, vector <Line>& result)
 {
     double d = dist * f.norm ().len ();
+
     result.push_back (Line (f.a, f.b, f.c - d));
     result.push_back (Line (f.a, f.b, f.c + d));
 }
 
 double Distance (Line f, Vector s)
 {
-    return 1.0 * abs (f.a * s.x + f.b * s.y + f.c) / f.norm ().len ();
+    return (double) abs (f.a * s.x + f.b * s.y + f.c) / f.norm ().len ();
 }
 
 struct Circle
 {
-    int x, y, r;
-    Circle (int x0 = 0, int y0 = 0, int r0 = 0): x (x0), y (y0), r (r0) {}
+    double x, y, r;
+
+    Circle (double x0 = 0, double y0 = 0, double r0 = 0): x (x0), y (y0), r (r0) {}
 };
+
+inline ostream& operator << (ostream& out, Circle example) { return out << example.x << ' ' << example.y << ' ' << example.r; }
+inline istream& operator >> (istream& in, Circle& example) { return in >> example.x >> example.y >> example.r; }
 
 void Crossing (Circle from, Line to, vector <pair <double, double>>& result)
 {
