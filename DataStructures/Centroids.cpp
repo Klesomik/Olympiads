@@ -26,7 +26,7 @@ int Centroid (int v, int p, int size)
 void Build (int v)
 {
     Size (v, -1);
-    c = Centroid (v, -1, sz[v]);
+    int c = Centroid (v, -1, sz[v]);
     GetResult (c);
     used[c] = true;
     for (int u : data[c])

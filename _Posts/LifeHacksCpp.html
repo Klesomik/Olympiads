@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeHacksCpp</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="лайфхаки-в-c">Лайфхаки в C++</h1>
+<h3 id="сделать-элементы-вектора-уникальными">Сделать элементы вектора уникальными</h3>
+<pre class=" language-cpp"><code class="prism  language-cpp">vector <span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> v<span class="token punctuation">;</span>
+<span class="token function">sort</span> <span class="token punctuation">(</span><span class="token function">all</span> <span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+v<span class="token punctuation">.</span><span class="token function">erase</span> <span class="token punctuation">(</span><span class="token function">unique</span> <span class="token punctuation">(</span><span class="token function">all</span> <span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">.</span><span class="token function">end</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="удалить-одно-вхождение-x-в-multiset">Удалить одно вхождение x в multiset</h3>
+<pre class=" language-cpp"><code class="prism  language-cpp">multiset <span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> ms<span class="token punctuation">;</span>
+ms<span class="token punctuation">.</span><span class="token function">erase</span> <span class="token punctuation">(</span>ms<span class="token punctuation">.</span><span class="token function">find</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="перенаправление-потоков">Перенаправление потоков</h3>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token function">freopen</span> <span class="token punctuation">(</span><span class="token string">"input.txt"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">,</span> <span class="token constant">stdin</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">freopen</span> <span class="token punctuation">(</span><span class="token string">"output.txt"</span><span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">,</span> <span class="token constant">stdout</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="считать-long-long-с-помощью-scanf">Считать long long с помощью scanf</h3>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">long</span> <span class="token keyword">long</span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token function">scanf</span> <span class="token punctuation">(</span><span class="token string">"%I64d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Windows</span>
+<span class="token function">scanf</span> <span class="token punctuation">(</span><span class="token string">"%lld"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Linux</span>
+</code></pre>
+<h3 id="считать-время-в-формате-hhmmss">Считать время в формате hh:mm:ss</h3>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">int</span> h <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> m <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> s <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token function">scanf</span> <span class="token punctuation">(</span><span class="token string">"%02d:02d:02d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>h<span class="token punctuation">,</span> <span class="token operator">&amp;</span>m<span class="token punctuation">,</span> <span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="ускорение-iostream">Ускорение iostream</h3>
+<pre class=" language-cpp"><code class="prism  language-cpp">ios_base<span class="token operator">::</span><span class="token function">sync_with_stdio</span> <span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cin<span class="token punctuation">.</span><span class="token function">tie</span> <span class="token punctuation">(</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cout<span class="token punctuation">.</span><span class="token function">tie</span> <span class="token punctuation">(</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="методы-coutа">Методы cout’а</h3>
+<pre class=" language-cpp"><code class="prism  language-cpp">cout<span class="token punctuation">.</span><span class="token function">width</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ширина вывода = x</span>
+cin<span class="token punctuation">.</span><span class="token function">get</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// считать 1 символ</span>
+</code></pre>
+<h3 id="декартово-дерево-в-g">Декартово дерево в g++</h3>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;ext/pb_ds/assoc_container.hpp&gt;</span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> __gnu_pbds<span class="token punctuation">;</span>
+
+<span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">key</span><span class="token punctuation">,</span> <span class="token keyword">class</span> <span class="token class-name">cmp</span> <span class="token operator">=</span> less <span class="token operator">&lt;</span>key<span class="token operator">&gt;&gt;</span>
+<span class="token keyword">using</span> ordered_set <span class="token operator">=</span> tree <span class="token operator">&lt;</span>key<span class="token punctuation">,</span> null_type<span class="token punctuation">,</span> cmp<span class="token punctuation">,</span> rb_tree_tag<span class="token punctuation">,</span> tree_order_statistics_node_update<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+ordered_set <span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> my_set<span class="token punctuation">;</span>
+
+<span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">key</span><span class="token punctuation">,</span> <span class="token keyword">class</span> <span class="token class-name">value</span><span class="token punctuation">,</span> <span class="token keyword">class</span> <span class="token class-name">cmp</span> <span class="token operator">=</span> less <span class="token operator">&lt;</span>key<span class="token operator">&gt;&gt;</span>
+<span class="token keyword">using</span> ordered_map <span class="token operator">=</span> tree <span class="token operator">&lt;</span>key<span class="token punctuation">,</span> value<span class="token punctuation">,</span> cmp<span class="token punctuation">,</span> rb_tree_tag<span class="token punctuation">,</span> tree_order_statistics_node_update<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+ordered_map <span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&gt;</span> my_map<span class="token punctuation">;</span>
+
+my_set<span class="token punctuation">.</span><span class="token function">order_of_key</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// сколько элементов в множестве меньше x</span>
+my_set<span class="token punctuation">.</span><span class="token function">find_by_order</span> <span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// k-ый по величине элемент в множестве</span>
+</code></pre>
+<h3 id="тестовые-функции-из-g">Тестовые функции из g++</h3>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token function">__gcd</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>         
+<span class="token function">__builtin_ffs</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">__builtin_clz</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// количество лидирующих нулей</span>
+<span class="token function">__builtin_ctz</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">__builtin_popcount</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// количество единичных битов</span>
+</code></pre>
+<h3 id="прагмы-иногда-ускоряют-код">Прагмы иногда ускоряют код</h3>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token macro property">#<span class="token directive keyword">pragma</span> GCC optimize("Ofast")</span>
+<span class="token macro property">#<span class="token directive keyword">pragma</span> GCC optimize("no-stack-protector")</span>
+<span class="token macro property">#<span class="token directive keyword">pragma</span> GCC optimize("unroll-loops")</span>
+<span class="token macro property">#<span class="token directive keyword">pragma</span> GCC target("sse,sse2,sse3,ssse3,popcnt,abm,mmx,tune=native")</span>
+<span class="token macro property">#<span class="token directive keyword">pragma</span> GCC optimize("fast-math")</span>
+
+<span class="token macro property">#<span class="token directive keyword">pragma</span> comment(linker, "/stack:200000000") </span><span class="token comment">// расширение стека, актуально для Visual Studio</span>
+</code></pre>
+<h3 id="рандом">Рандом</h3>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> rand() (rand()&lt;&lt;15+rand()) </span><span class="token comment">// рандом на Windows</span>
+mt19937 <span class="token function">rnd</span> <span class="token punctuation">(</span><span class="token function">time</span> <span class="token punctuation">(</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mt19937_64 <span class="token function">rnd</span> <span class="token punctuation">(</span><span class="token function">system_clock</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">now</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">time_since_epoch</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">count</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="как-измерить-время">Как измерить время</h3>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">double</span> <span class="token function">GetTime</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">1.0</span> <span class="token operator">*</span> <span class="token function">clock</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> CLOCKS_PER_SEC<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="компаратор-для-setа">Компаратор для set’а</h3>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">struct</span> Cmp
+<span class="token punctuation">{</span>
+    <span class="token keyword">bool</span> <span class="token keyword">operator</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">const</span> pair <span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span> a<span class="token punctuation">,</span> <span class="token keyword">const</span> pair <span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span> b<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> a<span class="token punctuation">.</span>first <span class="token operator">&lt;</span> b<span class="token punctuation">.</span>first<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+set <span class="token operator">&lt;</span>pair <span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&gt;</span><span class="token punctuation">,</span> Cmp<span class="token operator">&gt;</span> data<span class="token punctuation">;</span>
+</code></pre>
+<h3 id="использование-memset">Использование memset</h3>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">int</span> dp<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token function">memset</span> <span class="token punctuation">(</span>dp<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span>dp<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0 or -1</span>
+</code></pre>
+<h3 id="предподсчет-логарифмов-за-линию">Предподсчет логарифмов за линию</h3>
+<pre class=" language-cpp"><code class="prism  language-cpp">vector <span class="token operator">&lt;</span>lli<span class="token operator">&gt;</span> <span class="token function">LOG</span> <span class="token punctuation">(</span><span class="token number">1e6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+LOG<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>lli i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> LOG<span class="token punctuation">.</span><span class="token function">size</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    LOG<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> LOG<span class="token punctuation">[</span>i <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+</body>
+
+</html>

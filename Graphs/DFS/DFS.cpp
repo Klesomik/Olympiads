@@ -34,22 +34,24 @@ void DFS2 (int v, int p)
 {
     used[v] = true;
     fup[v] = tin[v] = timer++;
-    for (auto it : data[v])
+    int children = 0;
+    for (int u : data[v])
     {
-        if (it == p)
+        if (u == p)
             continue;
-        if (used[it])
-            fup[v] = min (fup[v], tin[it]);
+        if (used[u])
+            fup[v] = min (fup[v], tin[u]);
         else
         {
-            DFS (it, v);
-            fup[v] = min (fup[v], fup[it]);
-            if (fup[it] >= tin[v])
+            DFS (u, v);
+            fup[v] = min (fup[v], fup[u]);
+            if (fup[u] >= tin[v])
             {
             }
+            children++;
         }
     }
-    if ((p == -1) && (data[v].size () > 1))
+    if ((p == -1) && (children > 1))
     {
     }
 }

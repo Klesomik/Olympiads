@@ -107,6 +107,7 @@ main ()
 // Which is better?
 (double) x
 double (x)
+1.0 * x
 
 // GetTime
 double GetTime ()
@@ -139,4 +140,12 @@ int UpperDiv (int a, int b)
     if (a % b == 0)
         return a / b;
     return a / b + 1;
+}
+
+// не знаю работает ли, вроде как может работать для непростого модуля
+int Inv (int a)
+{
+    if (a == 1)
+        return 1;
+    return (1 - Inv (mod % a, a) * m) / a + mod;
 }

@@ -1,0 +1,28 @@
+Конструктив:
+http://codeforces.com/contest/743/problem/C
+http://codeforces.com/contest/1016/problem/D
+http://codeforces.com/contest/764/problem/C
+
+Хеши:
+http://codeforces.com/contest/580/problem/E
+
+Тервер:
+http://codeforces.com/contest/839/problem/C
+
+Геометрия + структуры данных:
+http://codeforces.com/contest/552/problem/D
+https://informatics.msk.ru/moodle/mod/statements/view3.php?chapterid=1208&run_id=1550r14549#1
+http://codeforces.com/contest/682/problem/E
+
+Сканлайн:
+http://codeforces.com/contest/555/problem/B
+
+Прокачка
+https://codeforces.com/blog/entry/22986
+https://codeforces.com/blog/entry/16599				
+https://codeforces.com/blog/entry/17842
+https://codeforces.com/blog/entry/20548
+https://codeforces.com/blog/entry/16443				
+
+http://codeforces.com/contest/669/problem/E [Красивая задача][STL]
+http://codeforces.com/contest/872/problem/D [Интерактивная][Разобраться]

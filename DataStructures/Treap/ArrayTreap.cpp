@@ -17,6 +17,7 @@ void Update (int root)
 {
 }
 
+// как режет split?
 pair <int, int> Split (int root, int x0)
 {
     if (root == -1)
@@ -61,4 +62,58 @@ int Insert (int root, int current)
 {
     auto tmp = Split (root, ram[current].x - 1);
     return Merge (Merge (tmp.first, current), tmp.second);
+}
+
+void BuildON (PTreap& root, vector <Check>& data)
+{
+    PTreap last = nullptr;
+
+    for (int i = 0; i < data.size (); i++)
+    {
+        PTreap current = new Treap (data[i].a, data[i].b, data[i].index);
+
+        if (i != 0)
+        {
+            while ((last->parent) && (last->y > current->y))
+                last = last->parent;
+
+            if (last->y < current->y)
+            {
+                if (last->right)
+                {
+                    current->left = last->right;
+
+                    last->right->parent = current;
+                }
+
+                last->right = current;
+
+                current->parent = last;
+            }
+
+            else
+            {
+                current->left = last;
+
+                last->parent = current;
+            }
+        }
+
+        last = current;
+    }
+
+    while (last->parent)
+        last = last->parent;
+
+    root = last;
+}
+
+void BuildONLogN (PTreap& root, vector <Check>& data)
+{
+    for (int i = 0; i < data.size (); i++)
+    {
+        PTreap current = new Treap (data[i].a, data[i].b, data[i].index);
+
+        Insert (root, current);
+    }
 }
